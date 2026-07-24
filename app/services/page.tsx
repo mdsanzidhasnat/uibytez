@@ -1,9 +1,9 @@
 import { Services } from "@/components/services";
 
 export const metadata = {
-  title: "Services — UIBytez",
+  title: "Services",
   description:
-    "Explore our full range of digital services — web development, branding, UI/UX, marketing, and more.",
+    "Explore our services — website design & development, digital marketing (SEO), product branding, UI/UX design, graphic design, and video editing.",
 };
 
 export default function ServicesPage() {

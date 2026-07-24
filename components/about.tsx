@@ -44,7 +44,7 @@ export function About() {
           ))}
         </div>
 
-        {/* Stats */}
+        {/* Highlights */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -52,17 +52,16 @@ export function About() {
           transition={{ duration: 0.6 }}
           className="grid grid-cols-2 md:grid-cols-4 gap-8 rounded-2xl border border-border bg-card p-8 md:p-12"
         >
-          {aboutContent.stats.map((stat, i) => (
+          {aboutContent.highlights.map((item, i) => (
             <motion.div
-              key={stat.label}
+              key={item.label}
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 * i, duration: 0.4 }}
               className="text-center"
             >
-              <div className="text-3xl md:text-4xl font-bold gradient-text mb-1">{stat.value}</div>
-              <div className="text-sm text-muted-foreground font-medium">{stat.label}</div>
+              <div className="text-base md:text-lg font-semibold text-foreground mb-1">{item.label}</div>
             </motion.div>
           ))}
         </motion.div>

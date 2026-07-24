@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, Play } from "lucide-react";
+import { ArrowRight, Play, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { heroContent } from "@/data/content";
 
@@ -78,6 +78,20 @@ export function Hero() {
                 <Play className="h-4 w-4" />
                 {heroContent.secondaryCta.label}
               </Button>
+              <a
+                href={heroContent.consultationCta.href}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button
+                  size="lg"
+                  variant="secondary"
+                  className="rounded-full px-7 gap-2"
+                >
+                  <Calendar className="h-4 w-4" />
+                  {heroContent.consultationCta.label}
+                </Button>
+              </a>
             </div>
           </motion.div>
 

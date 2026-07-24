@@ -1,9 +1,9 @@
 import { Portfolio } from "@/components/portfolio";
 
 export const metadata = {
-  title: "Portfolio — UIBytez",
+  title: "Portfolio",
   description:
-    "See our latest work in branding, web design, app development, and software.",
+    "Browse our portfolio of personal projects — e-commerce apps, web design, collaborative tools, and software built with React, Next.js, and modern stacks.",
 };
 
 export default function PortfolioPage() {

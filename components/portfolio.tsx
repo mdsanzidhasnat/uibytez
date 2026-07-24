@@ -30,10 +30,10 @@ export function Portfolio() {
             Our Work
           </span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight leading-tight mb-6">
-            Projects We&apos;re Proud Of
+            Personal Projects
           </h2>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            A curated selection of our recent work across branding, design, development, and digital marketing.
+            A selection of personal projects showcasing skills in web development, UI/UX design, and software engineering.
           </p>
         </motion.div>
 
@@ -100,9 +100,16 @@ export function Portfolio() {
               {/* Info */}
               <div className="p-5">
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-xs font-medium text-primary uppercase tracking-wider">
-                    {item.category}
-                  </span>
+                  <div className="flex items-center gap-2">
+                    <span className="text-xs font-medium text-primary uppercase tracking-wider">
+                      {item.category}
+                    </span>
+                    {item.personalProject && (
+                      <span className="text-xs font-medium text-muted-foreground bg-muted px-2 py-0.5 rounded-full">
+                        Personal Project
+                      </span>
+                    )}
+                  </div>
                   <span className="text-xs text-muted-foreground">{item.year}</span>
                 </div>
                 <h3 className="text-lg font-semibold mb-1">{item.title}</h3>

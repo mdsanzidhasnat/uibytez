@@ -1,9 +1,9 @@
 import {
   Globe,
   Palette,
-  Smartphone,
-  CalendarCheck,
   Megaphone,
+  PenTool,
+  Video,
   Code2,
   type LucideIcon,
 } from "lucide-react";
@@ -14,13 +14,14 @@ export const navLinks = [
   { label: "About", href: "/about" },
   { label: "Services", href: "/services" },
   { label: "Portfolio", href: "/portfolio" },
+  { label: "Pricing", href: "/pricing" },
   { label: "Process", href: "/process" },
   { label: "Contact", href: "/contact" },
 ] as const;
 
 export const siteConfig = {
   name: "UIBytez",
-  tagline: "Digital Marketing, Software & Design Agency",
+  tagline: "Web Design, Digital Marketing & UI/UX Agency",
   ctaButton: "Get a Quote",
   ctaHref: "/contact",
 } as const;
@@ -32,15 +33,17 @@ export const heroContent = {
     "A results-driven studio blending strategy, design, and technology to help ambitious brands stand out and scale in the digital landscape.",
   primaryCta: { label: "Start Your Project", href: "/contact" },
   secondaryCta: { label: "View Our Work", href: "/portfolio" },
+  // TODO: Replace CALENDLY_LINK_PLACEHOLDER with your real scheduling link (e.g. Calendly URL).
+  consultationCta: { label: "Book a Free Consultation", href: "CALENDLY_LINK_PLACEHOLDER" },
   marqueeItems: [
-    "Digital Marketing",
-    "Software Development",
-    "Branding",
-    "UI/UX Design",
-    "Design Solutions",
+    "Website Design",
     "Web Development",
-    "Product Strategy",
-    "Creative Direction",
+    "Digital Marketing",
+    "SEO Optimization",
+    "UI/UX Design",
+    "Product Branding",
+    "Graphic Design",
+    "Video Editing",
   ],
 } as const;
 
@@ -61,39 +64,32 @@ export const services: Service[] = [
     tags: ["Web Development", "Responsive Design", "SEO Optimization"],
   },
   {
-    icon: Palette,
-    title: "Product Branding",
-    description:
-      "From logo systems to complete brand guidelines, we create identities that resonate with your audience and stand the test of time.",
-    tags: ["Logo Design", "Brand Strategy", "Visual Identity"],
-  },
-  {
-    icon: Smartphone,
-    title: "Application Design & Development",
-    description:
-      "Native and cross-platform apps engineered for performance, usability, and a seamless user experience across every device.",
-    tags: ["Mobile Apps", "UI/UX", "Cross-Platform"],
-  },
-  {
-    icon: CalendarCheck,
-    title: "Event Management",
-    description:
-      "End-to-end event planning and digital promotion — from concept and branding to live execution and post-event analytics.",
-    tags: ["Brand Promotion", "Event Strategy", "Digital Campaigns"],
-  },
-  {
     icon: Megaphone,
     title: "Digital Marketing",
     description:
-      "Data-driven campaigns across search, social, and email that increase visibility, engagement, and measurable ROI for your business.",
-    tags: ["SEO", "PPC", "Social Media", "Email Marketing"],
+      "Data-driven SEO and digital marketing strategies that increase visibility, engagement, and measurable ROI for your business.",
+    tags: ["SEO", "Social Media", "Content Strategy"],
   },
   {
-    icon: Code2,
-    title: "Custom Software Solutions",
+    icon: Palette,
+    title: "Product Branding / UI-UX",
     description:
-      "Bespoke software, APIs, and integrations tailored to your workflow — built to scale with your business needs.",
-    tags: ["APIs", "SaaS", "Cloud Infrastructure"],
+      "From logo systems and brand guidelines to intuitive UI/UX design — we create visual identities and interfaces that resonate with your audience.",
+    tags: ["Logo Design", "Brand Strategy", "UI/UX Design"],
+  },
+  {
+    icon: PenTool,
+    title: "Graphic Design",
+    description:
+      "Visual content for marketing materials, social media, presentations, and print — designed to capture attention and communicate your message.",
+    tags: ["Marketing Materials", "Social Media Graphics", "Print Design"],
+  },
+  {
+    icon: Video,
+    title: "Video Editing",
+    description:
+      "Short-form and promotional video content for social media, ads, and brand storytelling — from raw footage to polished final cuts.",
+    tags: ["Short-Form Content", "Promotional Videos", "Social Media Reels"],
   },
 ];
 
@@ -117,11 +113,11 @@ export const aboutContent = {
       text: "We stay ahead of design trends and emerging technologies, ensuring your product feels fresh, modern, and built for what's next.",
     },
   ],
-  stats: [
-    { value: "150+", label: "Projects Delivered" },
-    { value: "50+", label: "Happy Clients" },
-    { value: "8+", label: "Years Experience" },
-    { value: "15+", label: "Team Members" },
+  highlights: [
+    { label: "Founded 2026" },
+    { label: "Specialized in React & Next.js" },
+    { label: "Direct Communication — No Middleman" },
+    { label: "Fast Turnaround on Small & Medium Projects" },
   ],
 };
 
@@ -132,50 +128,54 @@ export interface PortfolioItem {
   year: string;
   description: string;
   color: string;
+  personalProject?: boolean;
 }
 
 export const portfolioItems: PortfolioItem[] = [
   {
-    title: "Lumina Health",
-    category: "Branding",
-    year: "2025",
-    description: "Complete brand identity for a telehealth startup — logo, guidelines, and marketing collateral.",
-    color: "#14a8ad",
-  },
-  {
-    title: "NovaPay Dashboard",
-    category: "UI/UX Design",
-    year: "2025",
-    description: "A fintech dashboard redesign improving transaction clarity and user onboarding by 40%.",
-    color: "#089906",
-  },
-  {
-    title: "UrbanNest App",
-    category: "App Development",
-    year: "2024",
-    description: "Cross-platform real estate app with AR property previews and smart search features.",
-    color: "#f59e0b",
-  },
-  {
-    title: "GreenLeaf Store",
+    title: "DigitalMart",
     category: "E-Commerce",
-    year: "2024",
-    description: "Full-stack e-commerce platform with subscription management and inventory automation.",
+    year: "2025",
+    description:
+      "A full-stack MERN e-commerce application for digital products with user auth, product listings, cart, and payment integration.",
     color: "#8b5cf6",
+    personalProject: true,
   },
   {
-    title: "Pulse Analytics",
+    title: "CineVault",
+    category: "Web Design",
+    year: "2025",
+    description:
+      "A movie and series review & information website built with Next.js and Tailwind CSS, featuring search, ratings, and detailed info pages.",
+    color: "#ef4444",
+    personalProject: true,
+  },
+  {
+    title: "BD Home Finder",
+    category: "App Development",
+    year: "2025",
+    description:
+      "A real estate and property listing marketplace web app tailored for the Bangladesh market, with search filters and map integration.",
+    color: "#f59e0b",
+    personalProject: true,
+  },
+  {
+    title: "Workello",
+    category: "Software",
+    year: "2026",
+    description:
+      "A Kanban + Canvas collaborative workspace app built with React and Zustand — featuring lists, cards, tasks, and user authentication.",
+    color: "#06b6d4",
+    personalProject: true,
+  },
+  {
+    title: "Trading Profit Tracker",
     category: "Software",
     year: "2025",
-    description: "Custom analytics SaaS with real-time data visualization and automated reporting.",
-    color: "#ef4444",
-  },
-  {
-    title: "Atlas Travel Co.",
-    category: "Web Design",
-    year: "2024",
-    description: "Immersive travel booking site with dynamic pricing, interactive maps, and seamless checkout.",
-    color: "#06b6d4",
+    description:
+      "A personal web app for tracking trading performance, profit/loss analysis, and portfolio monitoring.",
+    color: "#10b981",
+    personalProject: true,
   },
 ];
 
@@ -210,6 +210,62 @@ export const processSteps: ProcessStep[] = [
     title: "Continuous Growth",
     description:
       "Post-launch analytics, A/B testing, and ongoing optimization keep your product evolving and improving month after month.",
+  },
+];
+
+// ─── PRICING ─────────────────────────────────────────────
+export interface PricingPlan {
+  name: string;
+  tagline: string;
+  // TODO: Replace placeholder prices with real values before launching.
+  price: string;
+  period: string;
+  features: string[];
+  highlighted?: boolean;
+}
+
+export const pricingPlans: PricingPlan[] = [
+  {
+    name: "Starter",
+    tagline: "Landing Page",
+    price: "$XXX",
+    period: "starting from",
+    features: [
+      "Single-page responsive website",
+      "Mobile-friendly design",
+      "Contact form integration",
+      "Basic SEO setup",
+      "1 revision round",
+    ],
+  },
+  {
+    name: "Standard",
+    tagline: "Business Website",
+    price: "$XXX",
+    period: "starting from",
+    features: [
+      "Multi-page responsive website",
+      "CMS or basic admin panel",
+      "SEO basics & meta tags",
+      "Contact form & social links",
+      "2 revision rounds",
+      "30-day post-launch support",
+    ],
+    highlighted: true,
+  },
+  {
+    name: "Premium",
+    tagline: "E-Commerce / Web App",
+    price: "$XXX",
+    period: "starting from",
+    features: [
+      "Full-stack custom build",
+      "Payment integration",
+      "User authentication & dashboards",
+      "Custom features & API integration",
+      "Performance optimization",
+      "60-day post-launch support",
+    ],
   },
 ];
 
@@ -254,23 +310,31 @@ export const testimonials: Testimonial[] = [
 ];
 
 // ─── CTA / CONTACT ───────────────────────────────────────
+// TODO: Replace WHATSAPP_NUMBER_PLACEHOLDER with your real WhatsApp number (e.g. "8801XXXXXXXXX")
+const WHATSAPP_NUMBER_PLACEHOLDER = "WHATSAPP_NUMBER_PLACEHOLDER";
+export const whatsappLink = `https://wa.me/${WHATSAPP_NUMBER_PLACEHOLDER}`;
+
+// TODO: Set up a real professional email (e.g. via Zoho Mail or Google Workspace) and replace this placeholder.
+export const CONTACT_EMAIL_PLACEHOLDER = "hello@UIBytez.com";
+
 export const ctaContent = {
   headline: "Let's Build Something Great Together",
   subheadline:
     "Ready to take your digital presence to the next level? Tell us about your project and we'll get back to you within 24 hours.",
-  phone: "+1 (555) 123-4567",
-  email: "hello@UIBytez.com",
+  whatsappLink,
+  email: CONTACT_EMAIL_PLACEHOLDER,
 };
 
 // ─── FOOTER ──────────────────────────────────────────────
 export const footerContent = {
   description:
-    "A remote-first digital studio crafting software, branding, UI/UX, and digital marketing for ambitious teams worldwide.",
+    "A remote-first digital agency specializing in website design, digital marketing, branding, UI/UX, graphic design, and video editing.",
   socialLinks: [
-    { platform: "Facebook", url: "https://facebook.com/UIBytez" },
-    { platform: "Instagram", url: "https://instagram.com/UIBytez" },
-    { platform: "Twitter", url: "https://x.com/UIBytez" },
-    { platform: "LinkedIn", url: "https://linkedin.com/company/UIBytez" },
+    // TODO: Uncomment and update URLs once each account is live and populated.
+    // { platform: "Facebook", url: "https://facebook.com/UIBytez" },
+    // { platform: "Instagram", url: "https://instagram.com/UIBytez" },
+    // { platform: "Twitter", url: "https://x.com/UIBytez" },
+    // { platform: "LinkedIn", url: "https://linkedin.com/company/UIBytez" },
   ],
   companyLinks: [
     { label: "Home", href: "/" },
@@ -280,11 +344,11 @@ export const footerContent = {
     { label: "Contact Us", href: "/contact" },
   ],
   serviceLinks: [
-    { label: "Digital Marketing", href: "/services" },
-    { label: "Software Development", href: "/services" },
-    { label: "Branding", href: "/services" },
-    { label: "UI/UX Design", href: "/services" },
-    { label: "Design Solutions", href: "/services" },
+    { label: "Web Development", href: "/services" },
+    { label: "Digital Marketing (SEO)", href: "/services" },
+    { label: "Product Branding / UI-UX", href: "/services" },
+    { label: "Graphic Design", href: "/services" },
+    { label: "Video Editing", href: "/services" },
   ],
   newsletterPlaceholder: "Enter your email",
   newsletterButton: "Subscribe",

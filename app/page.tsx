@@ -3,7 +3,9 @@ import { About } from "@/components/about";
 import { Services } from "@/components/services";
 import { Portfolio } from "@/components/portfolio";
 import { Process } from "@/components/process";
-import { Testimonials } from "@/components/testimonials";
+import { Pricing } from "@/components/pricing";
+// TODO: Re-enable this section once real client testimonials are collected.
+// import { Testimonials } from "@/components/testimonials";
 import { CtaSection } from "@/components/cta-section";
 
 export default function Home() {
@@ -14,7 +16,9 @@ export default function Home() {
       <Services />
       <Portfolio />
       <Process />
-      <Testimonials />
+      <Pricing />
+      {/* TODO: Re-enable this section once real client testimonials are collected. */}
+      {/* <Testimonials /> */}
       <CtaSection />
     </>
   );

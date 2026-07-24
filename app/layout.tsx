@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
+import { WhatsAppButton } from "@/components/whatsapp-button";
 import "./globals.css";
 
 const inter = Inter({
@@ -10,10 +11,42 @@ const inter = Inter({
   subsets: ["latin"],
 });
 
+// TODO: Replace SITE_URL_PLACEHOLDER with your actual domain once purchased (e.g. "https://uibytez.com").
+const SITE_URL_PLACEHOLDER = "https://uibytez.vercel.app";
+
 export const metadata: Metadata = {
-  title: "UIBytez — Digital Marketing, Software & Design Agency",
+  metadataBase: new URL(SITE_URL_PLACEHOLDER),
+  title: {
+    default: "UIBytez — Web Design, Digital Marketing & UI/UX Agency",
+    template: "%s — UIBytez",
+  },
   description:
-    "UIBytez is a full-service digital agency delivering software development, branding, UI/UX, and digital marketing for ambitious brands worldwide.",
+    "UIBytez is a digital agency specializing in website design & development, digital marketing (SEO), product branding, UI/UX design, graphic design, and video editing.",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    siteName: "UIBytez",
+    title: "UIBytez — Web Design, Digital Marketing & UI/UX Agency",
+    description:
+      "UIBytez is a digital agency specializing in website design & development, digital marketing (SEO), product branding, UI/UX design, graphic design, and video editing.",
+    // TODO: Replace with a real OG image (1200x630px) once created.
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "UIBytez — Digital Agency",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "UIBytez — Web Design, Digital Marketing & UI/UX Agency",
+    description:
+      "UIBytez is a digital agency specializing in website design & development, digital marketing (SEO), product branding, UI/UX design, graphic design, and video editing.",
+    // TODO: Replace with a real OG image once created.
+    images: ["/og-image.png"],
+  },
 };
 
 export default function RootLayout({
@@ -33,6 +66,7 @@ export default function RootLayout({
           <Navbar />
           <main className="flex-1">{children}</main>
           <Footer />
+          <WhatsAppButton />
         </ThemeProvider>
       </body>
     </html>

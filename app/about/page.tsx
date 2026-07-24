@@ -1,9 +1,9 @@
 import { About } from "@/components/about";
 
 export const metadata = {
-  title: "About Us — UIBytez",
+  title: "About Us",
   description:
-    "Learn about UIBytez, our mission, values, and the team behind the work.",
+    "Learn about UIBytez — a remote-first digital agency founded in 2026, specializing in React & Next.js development, UI/UX design, and digital marketing.",
 };
 
 export default function AboutPage() {

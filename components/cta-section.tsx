@@ -1,9 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, Phone, Mail } from "lucide-react";
+import { ArrowRight, MessageCircle, Mail, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { ctaContent } from "@/data/content";
+import { ctaContent, heroContent } from "@/data/content";
 
 export function CtaSection() {
   return (
@@ -42,6 +42,20 @@ export function CtaSection() {
                   Get a Free Quote
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Button>
+                <a
+                  href={heroContent.consultationCta.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    className="rounded-full px-7 gap-2 border-white/30 text-white hover:bg-white/10"
+                  >
+                    <Calendar className="h-4 w-4" />
+                    {heroContent.consultationCta.label}
+                  </Button>
+                </a>
               </div>
             </div>
 
@@ -85,11 +99,13 @@ export function CtaSection() {
 
               <div className="flex flex-col sm:flex-row gap-4 text-sm text-primary-foreground/70">
                 <a
-                  href={`tel:${ctaContent.phone}`}
+                  href={ctaContent.whatsappLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="flex items-center gap-2 hover:text-white transition-colors"
                 >
-                  <Phone className="h-4 w-4" />
-                  {ctaContent.phone}
+                  <MessageCircle className="h-4 w-4" />
+                  Chat on WhatsApp
                 </a>
                 <a
                   href={`mailto:${ctaContent.email}`}
