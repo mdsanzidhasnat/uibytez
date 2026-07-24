@@ -1,5 +1,6 @@
 "use client";
 
+import { Suspense } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { motion } from "framer-motion";
@@ -7,7 +8,7 @@ import { ArrowRight, MessageCircle, Mail, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ctaContent, heroContent } from "@/data/content";
 
-export function CtaSection() {
+function CtaSectionInner() {
   const searchParams = useSearchParams();
   const subjectDefault = searchParams.get("type") === "consultation" ? "Consultation Request" : "";
   return (
@@ -122,5 +123,13 @@ export function CtaSection() {
         </motion.div>
       </div>
     </section>
+  );
+}
+
+export function CtaSection() {
+  return (
+    <Suspense>
+      <CtaSectionInner />
+    </Suspense>
   );
 }

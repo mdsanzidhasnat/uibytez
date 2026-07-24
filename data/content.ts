@@ -338,13 +338,7 @@ export const ctaContent = {
 export const footerContent = {
   description:
     "A remote-first digital agency specializing in website design, digital marketing, branding, UI/UX, graphic design, and video editing.",
-  socialLinks: [
-    // TODO: Uncomment and update URLs once each account is live and populated.
-    // { platform: "Facebook", url: "https://facebook.com/UIBytez" },
-    // { platform: "Instagram", url: "https://instagram.com/UIBytez" },
-    // { platform: "Twitter", url: "https://x.com/UIBytez" },
-    // { platform: "LinkedIn", url: "https://linkedin.com/company/UIBytez" },
-  ],
+  socialLinks: [] as { platform: string; url: string }[],
   companyLinks: [
     { label: "Home", href: "/" },
     { label: "About Us", href: "/about" },
