@@ -182,6 +182,12 @@
   .dark .glass {
     @apply bg-navy-800/70 backdrop-blur-xl;
   }
+  .bg-grid-pattern {
+    background-image:
+      linear-gradient(var(--foreground) 1px, transparent 1px),
+      linear-gradient(90deg, var(--foreground) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
   .glow-teal {
     box-shadow: 0 0 20px oklch(0.60 0.17 180 / 0.3), 0 0 60px oklch(0.60 0.17 180 / 0.1);
   }

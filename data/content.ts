@@ -33,8 +33,8 @@ export const heroContent = {
     "A results-driven studio blending strategy, design, and technology to help ambitious brands stand out and scale in the digital landscape.",
   primaryCta: { label: "Start Your Project", href: "/contact" },
   secondaryCta: { label: "View Our Work", href: "/portfolio" },
-  // TODO: Replace CALENDLY_LINK_PLACEHOLDER with your real scheduling link (e.g. Calendly URL).
-  consultationCta: { label: "Book a Free Consultation", href: "CALENDLY_LINK_PLACEHOLDER" },
+  // TODO: Replace '/contact' with real Calendly (or similar) booking link once set up — swap the href to the real scheduling URL.
+  consultationCta: { label: "Book a Free Consultation", href: "/contact?type=consultation" },
   marqueeItems: [
     "Website Design",
     "Web Development",
@@ -217,8 +217,8 @@ export const processSteps: ProcessStep[] = [
 export interface PricingPlan {
   name: string;
   tagline: string;
-  // TODO: Replace placeholder prices with real values before launching.
-  price: string;
+  usd: number;
+  bdt: number;
   period: string;
   features: string[];
   highlighted?: boolean;
@@ -228,7 +228,8 @@ export const pricingPlans: PricingPlan[] = [
   {
     name: "Starter",
     tagline: "Landing Page",
-    price: "$XXX",
+    usd: 89,
+    bdt: 7999,
     period: "starting from",
     features: [
       "Single-page responsive website",
@@ -241,7 +242,8 @@ export const pricingPlans: PricingPlan[] = [
   {
     name: "Standard",
     tagline: "Business Website",
-    price: "$XXX",
+    usd: 249,
+    bdt: 19999,
     period: "starting from",
     features: [
       "Multi-page responsive website",
@@ -256,7 +258,8 @@ export const pricingPlans: PricingPlan[] = [
   {
     name: "Premium",
     tagline: "E-Commerce / Web App",
-    price: "$XXX",
+    usd: 599,
+    bdt: 49999,
     period: "starting from",
     features: [
       "Full-stack custom build",
@@ -268,6 +271,15 @@ export const pricingPlans: PricingPlan[] = [
     ],
   },
 ];
+
+export type Currency = "USD" | "BDT";
+
+export function formatPrice(plan: PricingPlan, currency: Currency): string {
+  if (currency === "BDT") {
+    return `৳${plan.bdt.toLocaleString("en-IN")}`;
+  }
+  return `$${plan.usd}`;
+}
 
 // ─── TESTIMONIALS ────────────────────────────────────────
 export interface Testimonial {
@@ -310,19 +322,16 @@ export const testimonials: Testimonial[] = [
 ];
 
 // ─── CTA / CONTACT ───────────────────────────────────────
-// TODO: Replace WHATSAPP_NUMBER_PLACEHOLDER with your real WhatsApp number (e.g. "8801XXXXXXXXX")
-const WHATSAPP_NUMBER_PLACEHOLDER = "WHATSAPP_NUMBER_PLACEHOLDER";
-export const whatsappLink = `https://wa.me/${WHATSAPP_NUMBER_PLACEHOLDER}`;
+export const whatsappLink = "https://wa.me/8801568387427";
 
-// TODO: Set up a real professional email (e.g. via Zoho Mail or Google Workspace) and replace this placeholder.
-export const CONTACT_EMAIL_PLACEHOLDER = "hello@UIBytez.com";
+export const CONTACT_EMAIL = "uibytez@gmail.com";
 
 export const ctaContent = {
   headline: "Let's Build Something Great Together",
   subheadline:
     "Ready to take your digital presence to the next level? Tell us about your project and we'll get back to you within 24 hours.",
   whatsappLink,
-  email: CONTACT_EMAIL_PLACEHOLDER,
+  email: CONTACT_EMAIL,
 };
 
 // ─── FOOTER ──────────────────────────────────────────────

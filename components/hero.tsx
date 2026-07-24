@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight, Play, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -17,7 +18,7 @@ export function Hero() {
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] rounded-full bg-gradient-to-br from-teal-400/20 via-green-accent/10 to-transparent blur-3xl dark:from-teal-500/15 dark:via-green-500/8" />
         <div className="absolute bottom-0 right-0 w-[600px] h-[600px] rounded-full bg-gradient-to-tl from-teal-500/10 to-transparent blur-3xl dark:from-teal-600/8" />
         {/* Grid pattern */}
-        <div className="absolute inset-0 bg-[linear-gradient(oklch(0.18 0.04 240 / 0.03)_1px,transparent_1px),linear-gradient(90deg,oklch(0.18 0.04 240 / 0.03)_1px,transparent_1px)] bg-[size:60px_60px] dark:bg-[linear-gradient(oklch(0.95 0.005 240 / 0.04)_1px,transparent_1px),linear-gradient(90deg,oklch(0.95 0.005 240 / 0.04)_1px,transparent_1px)]" />
+        <div className="absolute inset-0 bg-grid-pattern opacity-30 dark:opacity-40" />
       </div>
 
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 py-16 md:py-24">
@@ -56,33 +57,28 @@ export function Hero() {
               {heroContent.subheadline}
             </p>
 
-            <div className="flex flex-wrap gap-3">
-              <Button
-                size="lg"
-                className="rounded-full px-7 gap-2 group"
-                onClick={() => {
-                  document.querySelector(heroContent.primaryCta.href)?.scrollIntoView({ behavior: "smooth" });
-                }}
-              >
-                {heroContent.primaryCta.label}
-                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="rounded-full px-7 gap-2 group"
-                onClick={() => {
-                  document.querySelector(heroContent.secondaryCta.href)?.scrollIntoView({ behavior: "smooth" });
-                }}
-              >
-                <Play className="h-4 w-4" />
-                {heroContent.secondaryCta.label}
-              </Button>
-              <a
-                href={heroContent.consultationCta.href}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+            <div className="flex flex-wrap justify-center gap-3">
+              <Link href={heroContent.primaryCta.href}>
+                <Button
+                  size="lg"
+                  className="rounded-full px-7 gap-2 group"
+                >
+                  {heroContent.primaryCta.label}
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </Button>
+              </Link>
+              <Link href={heroContent.secondaryCta.href}>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="rounded-full px-7 gap-2 group"
+                >
+                  <Play className="h-4 w-4" />
+                  {heroContent.secondaryCta.label}
+                </Button>
+              </Link>
+              {/* TODO: Replace Link href with real Calendly (or similar) booking link once set up. */}
+              <Link href={heroContent.consultationCta.href}>
                 <Button
                   size="lg"
                   variant="secondary"
@@ -91,7 +87,7 @@ export function Hero() {
                   <Calendar className="h-4 w-4" />
                   {heroContent.consultationCta.label}
                 </Button>
-              </a>
+              </Link>
             </div>
           </motion.div>
 

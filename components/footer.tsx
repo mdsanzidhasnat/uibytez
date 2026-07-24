@@ -99,7 +99,7 @@ export function Footer() {
               <input
                 type="email"
                 placeholder={footerContent.newsletterPlaceholder}
-                className="flex-1 rounded-xl bg-muted border border-border px-4 py-2.5 text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/30 transition-all"
+                className="min-w-0 flex-1 rounded-xl bg-muted border border-border px-4 py-2.5 text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/30 transition-all"
               />
               <button className="rounded-xl bg-primary text-primary-foreground px-4 py-2.5 text-sm font-medium hover:bg-primary/90 transition-colors shrink-0">
                 {footerContent.newsletterButton}
@@ -112,7 +112,7 @@ export function Footer() {
         <Separator className="my-10" />
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-xs text-muted-foreground">{footerContent.copyright}</p>
-          <div className="flex items-center gap-4">
+          <div className="flex flex-wrap items-center justify-center gap-4">
             {footerContent.legalLinks.map((link) => (
               <Link
                 key={link.label}
@@ -126,7 +126,7 @@ export function Footer() {
           <Button
             variant="outline"
             size="icon"
-            className="h-8 w-8 rounded-full"
+            className="h-10 w-10 rounded-full"
             onClick={scrollToTop}
             aria-label="Scroll to top"
           >

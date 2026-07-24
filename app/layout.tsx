@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
+import { CurrencyProvider } from "@/lib/currency-context";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { WhatsAppButton } from "@/components/whatsapp-button";
@@ -57,17 +58,19 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} h-full`} suppressHydrationWarning>
       <body className="min-h-full flex flex-col antialiased">
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange={false}
-        >
-          <Navbar />
-          <main className="flex-1">{children}</main>
-          <Footer />
-          <WhatsAppButton />
-        </ThemeProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange={false}
+          >
+            <CurrencyProvider>
+              <Navbar />
+              <main className="flex-1">{children}</main>
+              <Footer />
+              <WhatsAppButton />
+            </CurrencyProvider>
+          </ThemeProvider>
       </body>
     </html>
   );

@@ -1,11 +1,15 @@
 "use client";
 
+import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { motion } from "framer-motion";
 import { ArrowRight, MessageCircle, Mail, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ctaContent, heroContent } from "@/data/content";
 
 export function CtaSection() {
+  const searchParams = useSearchParams();
+  const subjectDefault = searchParams.get("type") === "consultation" ? "Consultation Request" : "";
   return (
     <section id="contact" className="py-24 md:py-32 relative">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -42,11 +46,8 @@ export function CtaSection() {
                   Get a Free Quote
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Button>
-                <a
-                  href={heroContent.consultationCta.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                {/* TODO: Replace Link href with real Calendly (or similar) booking link once set up. */}
+                <Link href={heroContent.consultationCta.href}>
                   <Button
                     size="lg"
                     variant="outline"
@@ -55,7 +56,7 @@ export function CtaSection() {
                     <Calendar className="h-4 w-4" />
                     {heroContent.consultationCta.label}
                   </Button>
-                </a>
+                </Link>
               </div>
             </div>
 
@@ -70,23 +71,24 @@ export function CtaSection() {
                   <input
                     type="text"
                     placeholder="Your name"
-                    className="rounded-xl bg-white/10 border border-white/20 px-4 py-3 text-sm placeholder:text-white/50 text-white focus:outline-none focus:ring-2 focus:ring-white/30 transition-all"
+                    className="rounded-xl bg-white/10 border border-white/20 px-4 py-3 text-base placeholder:text-primary-foreground/50 text-primary-foreground focus:outline-none focus:ring-2 focus:ring-white/30 transition-all"
                   />
                   <input
                     type="email"
                     placeholder="Email address"
-                    className="rounded-xl bg-white/10 border border-white/20 px-4 py-3 text-sm placeholder:text-white/50 text-white focus:outline-none focus:ring-2 focus:ring-white/30 transition-all"
+                    className="rounded-xl bg-white/10 border border-white/20 px-4 py-3 text-base placeholder:text-primary-foreground/50 text-primary-foreground focus:outline-none focus:ring-2 focus:ring-white/30 transition-all"
                   />
                 </div>
                 <input
                   type="text"
                   placeholder="Subject"
-                  className="w-full rounded-xl bg-white/10 border border-white/20 px-4 py-3 text-sm placeholder:text-white/50 text-white focus:outline-none focus:ring-2 focus:ring-white/30 transition-all"
+                  defaultValue={subjectDefault}
+                  className="w-full rounded-xl bg-white/10 border border-white/20 px-4 py-3 text-base placeholder:text-primary-foreground/50 text-primary-foreground focus:outline-none focus:ring-2 focus:ring-white/30 transition-all"
                 />
                 <textarea
                   placeholder="Tell us about your project..."
                   rows={4}
-                  className="w-full rounded-xl bg-white/10 border border-white/20 px-4 py-3 text-sm placeholder:text-white/50 text-white focus:outline-none focus:ring-2 focus:ring-white/30 transition-all resize-none"
+                  className="w-full rounded-xl bg-white/10 border border-white/20 px-4 py-3 text-base placeholder:text-primary-foreground/50 text-primary-foreground focus:outline-none focus:ring-2 focus:ring-white/30 transition-all resize-none"
                 />
                 <Button
                   size="lg"

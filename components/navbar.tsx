@@ -87,7 +87,7 @@ export function Navbar() {
           <Button
             variant="ghost"
             size="icon"
-            className="h-9 w-9 md:hidden"
+            className="h-11 w-11 md:hidden"
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label="Toggle menu"
           >
